@@ -78,7 +78,7 @@ module.exports = {
 
 	search: function (key, callback) {
 		var sql = "SELECT * FROM post WHERE ptitle LIKE '" + key + "%' ";
-		console.log(sql);
+
 		db.getResults(sql, function (results) {
 
 			console.log("dataset length " + results.length);
