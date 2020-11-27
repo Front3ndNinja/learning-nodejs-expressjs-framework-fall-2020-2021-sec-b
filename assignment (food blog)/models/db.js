@@ -1,19 +1,19 @@
-const mysql 	= require('mysql');
+const mysql = require('mysql');
 
-var getConnection = function(callback){
+var getConnection = function (callback) {
 	var connection = mysql.createConnection({
-		  host     : '127.0.0.1',
-		  database : 'foodblog',
-		  user     : 'root',
-		  password : ''
-		});
-	 
-	connection.connect(function(err) {
-	  if (err) {
-	    console.error('error connecting: ' + err.stack);
-	    return;
-	  }
-	  console.log('connected as id ' + connection.threadId);
+		host: '127.0.0.1',
+		database: 'foodblog',
+		user: 'root',
+		password: ''
+	});
+
+	connection.connect(function (err) {
+		if (err) {
+			console.error('error connecting: ' + err.stack);
+			return;
+		}
+		console.log('connected as id ' + connection.threadId);
 
 	});
 
@@ -22,32 +22,32 @@ var getConnection = function(callback){
 }
 
 module.exports = {
-	getResults: function (sql, callback){
-		getConnection(function(connection){
-			connection.query(sql , function (error, results) {
+	getResults: function (sql, callback) {
+		getConnection(function (connection) {
+			connection.query(sql, function (error, results) {
 				callback(results);
 			});
-			
-			connection.end(function(err) {
-			  console.log('connection end...');
-			});		
+
+			connection.end(function (err) {
+				console.log('connection end...');
+			});
 		});
 
 	},
-	execute: function (sql, callback){
-		getConnection(function(connection){
-			connection.query(sql , function (error, status) {
-				
-				if(status){
+	execute: function (sql, callback) {
+		getConnection(function (connection) {
+			connection.query(sql, function (error, status) {
+
+				if (status) {
 					callback(true);
-				}else{
+				} else {
 					callback(false);
 				}
 			});
-			
-			connection.end(function(err) {
-			  console.log('connection end...');
-			});		
+
+			connection.end(function (err) {
+				console.log('connection end...');
+			});
 		});
 	}
 }
