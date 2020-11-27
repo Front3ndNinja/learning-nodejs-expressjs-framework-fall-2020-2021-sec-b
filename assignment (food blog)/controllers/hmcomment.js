@@ -1,6 +1,6 @@
 const express = require('express');
 var url = require('url');
-//const commentModel = require('./models/commentModel');
+
 const commentModel = require.main.require('./models/feedback');
 
 const router = express.Router();
@@ -49,7 +49,7 @@ router.post('/hmedit/:id', (req, res) => {
 
         var i = req.params.id;
         var cResponse = req.body.comment;
-       
+
 
         commentModel.update(i, cResponse, function (status) {
 
@@ -63,7 +63,7 @@ router.post('/hmedit/:id', (req, res) => {
         })
 
     }
-   
+
 
 
 });

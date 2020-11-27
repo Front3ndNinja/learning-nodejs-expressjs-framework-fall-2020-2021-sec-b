@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 	if (req.session.uname != "") {
 		var suname = req.session.uname;
-		//var suid = req.session.uname;
+
 		res.render('home/hmindex', { name: suname});
 	}
 
@@ -29,7 +29,7 @@ router.get('/hmuserlist', (req, res) => {
 
 	if (req.session.uname != "") {
 		suname = req.session.uname;
-		// console.log(suname);
+		
 		userModel.getAll(suname,function (results) {
 			res.render('home/hmuserlist', { users: results });
 
@@ -45,8 +45,7 @@ router.get('/hmuserlist', (req, res) => {
 router.get('/hmcommentlist', (req, res) => {
 
 	if (req.session.uname != "") {
-		//suname = req.session.uname;
-		// console.log(suname);
+	
 		commentModel.getAll(function (results) {
 			res.render('home/hmcommentlist', { users: results });
 
@@ -83,7 +82,7 @@ router.get('/ajaxsearch/:id',(req,res)=>{
 
 	var word = req.params.id;
 	console.log('word value '+word);
-	if(word!=null || word!=undefined || txt!=null)
+	if(word!=null)
 	{
 		userModel.search(word, function(results){
 
@@ -94,7 +93,6 @@ router.get('/ajaxsearch/:id',(req,res)=>{
 
 			}
 			console.log("in ajax "+str);
-			//res.render('user/edit', {users: results});
 			res.send(str);
 
 		});
