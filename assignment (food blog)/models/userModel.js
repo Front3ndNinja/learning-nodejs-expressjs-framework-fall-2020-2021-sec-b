@@ -20,13 +20,12 @@ module.exports = {
 
 		var sql = "select * from post where pid='" + Sid + "'";
 		db.getResults(sql, function (results) {
-			//console.log(results.username);
+			
 			callback(results);
 		});
 
-
-
 	},
+
 	getAll: function (suname, callback) {
 		//uname = 'neil';
 		var sql = "select * from post where tag='" + suname + "'";

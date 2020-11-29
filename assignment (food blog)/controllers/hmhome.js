@@ -1,5 +1,5 @@
 const express = require('express');
-const commentModel = require('../models/commentModel');
+const commentModel = require('../models/feedback');
 const userModel = require.main.require('./models/userModel');
 const router = express.Router();
 
